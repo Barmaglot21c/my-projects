@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "clear window",
+            "command": "cls", 
+        },
+        {
+            "type": "shell",
+            "label": "g++.exe build active file",
+            "command": "C:\\gcc\\mingw64\\bin\\g++", 
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${fileDirname}/**.cpp",
+                "-o",
+                "${fileDirname}\\..\\build\\Game.exe",
+                "-IE:\\SeniorFolder\\Libs\\SDL2-2.30.6_vscode\\x86_64-w64-mingw32\\include",
+                //"-Ilog",
+                //"-IE:\\SeniorFolder\\Libs\\SDL2_image-2.8.2_vscode\\x86_64-w64-mingw32\\include",
+                "-LE:\\SeniorFolder\\Libs\\SDL2-2.30.6_vscode\\x86_64-w64-mingw32\\lib",
+                //"-LE:\\SeniorFolder\\Libs\\SDL2_image-2.8.2_vscode\\x86_64-w64-mingw32\\lib",
+                "-lmingw32",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_image"
+                //"-mwindows" //Блокирует вызов терминала
+                /*,"-static-libgcc", 
+                "-static-libstdc++" //need also add libs: "-static-libgcc" and "-static-libstdc++" из комментов*/
+            ],
+            "options": {
+                "cwd": "C:\\gcc\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+
+        }
+    ]
+}

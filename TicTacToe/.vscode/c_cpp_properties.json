@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "E:\\SeniorFolder\\Libs\\SDL2-2.30.6_vscode\\x86_64-w64-mingw32\\include"
+                //"E:\\SeniorFolder\\Libs\\SDL2_image-2.8.2_vscode\\x86_64-w64-mingw32\\include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPath": "C:/gcc/mingw64/bin/g++.exe"
+        }
+    ],
+    "version": 4
+}
