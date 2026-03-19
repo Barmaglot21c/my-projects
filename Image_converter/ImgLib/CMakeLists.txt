@@ -4,7 +4,8 @@ project(ImgLib CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 # добавляем новую переменную - путь к LibJPEG
-set(LIBJPEG_DIR CACHE STRING "LibJPEG static library directory")
+#set(LIBJPEG_DIR CACHE STRING "LibJPEG static library directory")
+set(LIBJPEG_DIR "D:/practicum/src_ch2/les_5.5.10/libjpeg/jpeg-9f")
 if(NOT LIBJPEG_DIR)
     message(FATAL_ERROR "Please, specify LibJPEG directory via -DLIBJPEG_DIR=<dir>")
 endif()
@@ -22,13 +23,14 @@ add_library(ImgLib STATIC ${IMGLIB_MAIN_FILES}
     ${IMGLIB_FORMAT_FILES})
 
 # Include-директории теперь включают LibJPEG
-target_include_directories(ImgLib PUBLIC "${LIBJPEG_DIR}/include")
+target_include_directories(ImgLib PUBLIC    "${LIBJPEG_DIR}" 
+                                            "${LIBJPEG_DIR}/debug")
 
 # Флаг INTERFACE обозначает видимость параметра - только для зависимых целей.
 # Для самой ImgLib не нужно указывать зависимости компоновки, поскольку
 # статическая библиотека не компонуется, а просто архивируется
 target_link_directories(ImgLib INTERFACE
-    "${LIBJPEG_DIR}/lib/$<IF:$<CONFIG:Debug>,Debug,Release>"
+    "${LIBJPEG_DIR}/debug/.libs"
 )
 
 # В качестве зависимости указано jpeg. Компоновщик будет искать

@@ -1,0 +1,107 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        
+
+
+        {
+            "name": "(gdb) Run Debug multifiles",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "E:/gcc/mingw64_old/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Задать для варианта приложения дизассемблирования значение Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "set charset UTF-8"
+                }
+            ],
+            "preLaunchTask": "cmake: build",
+            "internalConsoleOptions": "neverOpen"
+        },
+
+        {
+            "name": "(gdb) Run Release multifiles",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/../../build/${relativeFileDirname}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "E:/gcc/mingw64_old/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Задать для варианта приложения дизассемблирования значение Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "set charset UTF-8"
+                }
+            ],
+            "preLaunchTask": "g++.exe release build files in folder",
+            "internalConsoleOptions": "neverOpen"
+        },
+
+        {
+            "name": "(gdb) Run Image",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/../../build/${relativeFileDirname}.exe",
+            "args": ["les_5.5.2/src/1.kissy++.ppm", "les_5.5.2/src/my_kissy.ppm"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "E:/gcc/mingw64_old/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Задать для варианта приложения дизассемблирования значение Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "set charset UTF-8"
+                }
+            ],
+            "preLaunchTask": "g++.exe debug build files in folder",
+            "internalConsoleOptions": "neverOpen"
+        }
+        
+
+
+    ]
+}

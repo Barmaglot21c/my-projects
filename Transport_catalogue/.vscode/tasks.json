@@ -1,0 +1,88 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+
+        
+        {
+            "type": "shell",
+            "label": "debug build",
+            "command": "D:/Program_Files/gcc/mingw64/bin/g++.exe",
+            "args": [
+                "-std=c++20",
+                "-g",
+                "\"**.cpp\"",
+                "-o",
+                "\"../build/transport_catalogue_4.10.6.exe\"",
+                "-D_GLIBCXX_DEBUG",
+                "-Werror",
+                "-Wall"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+
+        },
+
+        {
+            "type": "shell",
+            "label": "release build",
+            "command": "D:/Program_Files/gcc/mingw64/bin/g++.exe",
+            "args": [
+                "-std=c++20",
+                "-g",
+                "-O2",
+                "\"${workspaceFolder}/**.cpp\"",
+                "-o",
+                "\"${workspaceFolder}/../build/transport_catalogue_4.10.6.exe\"",
+                "-Werror",
+                "-Wall"
+            ],
+            "options": {
+                "cwd": "D:/Program_Files/gcc/mingw64/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+
+        },
+        {
+            "type": "shell",
+            "label": "test",
+            "command": "D:/Program_Files/gcc/mingw64/bin/g++.exe",
+            "args": [
+                "-std=c++20",
+                "-g",
+                "test/geotest.cpp",
+                "geo.cpp",
+                "-o",
+                "../build/test.exe",
+                "-I${workspaceFolder}",
+                "-D_GLIBCXX_DEBUG",
+                "-Werror",
+                "-Wall"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+
+        }
+    ]
+}

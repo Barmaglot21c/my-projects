@@ -1,0 +1,30 @@
+[
+    {
+        "items": [
+            {
+                "stop_name": "Tverskaya ul 20",
+                "time": 490,
+                "type": "Wait"
+            },
+            {
+                "bus": "4",
+                "span_count": 2,
+                "time": 76.188,
+                "type": "Bus"
+            },
+            {
+                "stop_name": "Kremlin",
+                "time": 490,
+                "type": "Wait"
+            },
+            {
+                "bus": "31k",
+                "span_count": 3,
+                "time": 252.067,
+                "type": "Bus"
+            }
+        ],
+        "request_id": 1918086003,
+        "total_time": 1308.26
+    }
+]

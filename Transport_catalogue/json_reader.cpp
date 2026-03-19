@@ -165,9 +165,8 @@ svg::Color JsonReader::GetColor(json::Node js_color) const {
 //---------------Set-Route-config------------------//
 
 void JsonReader::SetRouteSettings() {
-  double velocity =
-      input_.routing_settings->at("bus_velocity").AsDouble() *1000. /60;
-  int wait_time = input_.routing_settings->at("bus_wait_time").AsInt() ;
+  double velocity = input_.routing_settings->at("bus_velocity").AsDouble() * 1000. / 60;
+  int wait_time = input_.routing_settings->at("bus_wait_time").AsInt();
 
   // route_manager_.SetParameters(wait_time, velocity);
   // route_manager_.SetBuses();
@@ -194,9 +193,11 @@ json::Document JsonReader::GetStat() {
     } else if (command.at("type").AsString() == "Bus"s) {
       GetBusInfo(root, command.at("name").AsString(), command.at("id").AsInt());
     } else if (command.at("type").AsString() == "Map"s) {
-      GetMap(root, command.at("id").AsInt());
+      if (command.count("path"))
+        GetMap(root, command.at("id").AsInt(), command.at("path").AsString());
+      else
+        GetMap(root, command.at("id").AsInt());
     } else if (command.at("type").AsString() == "Route") {
-
 #ifdef DEBUG
       auto start = chrono::high_resolution_clock::now();
 #endif
@@ -267,11 +268,14 @@ void JsonReader::GetBusInfo(json::Builder& builder, string_view name, int id) co
   builder.EndDict();
 }
 
-void JsonReader::GetMap(json::Builder& builder, int id) const {
+void JsonReader::GetMap(json::Builder& builder, int id, string img_path) const {
   std::stringstream image;
   request_.RenderMap(image);
   builder.StartDict().Key("request_id").Value(id);
   builder.Key("map").Value(image.str()).EndDict();
+  if (!img_path.empty()) {
+    // Обрабатываем сейв изображения
+  }
 }
 
 void JsonReader::GetRouteInfo(json::Builder& builder, std::string_view stop_from,

@@ -54,7 +54,7 @@ class JsonReader {
   void GetStopInfo(json::Builder& builder, std::string_view name, int id) const;
   void GetBusInfo(json::Builder& builder, std::string_view name, int id) const;
   svg::Color GetColor(json::Node js_color) const;
-  void GetMap(json::Builder& builder, int id) const;
+  void GetMap(json::Builder& builder, int id, std::string img_path = "") const;
   void GetRouteInfo(json::Builder& builder, std::string_view stop_from, std::string_view stop_to,
                     int id) const;
 
