@@ -13,6 +13,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <fstream>
 #include <iomanip>
 #include <iterator>
 #include <unordered_map>
@@ -274,7 +275,16 @@ void JsonReader::GetMap(json::Builder& builder, int id, string img_path) const {
   builder.StartDict().Key("request_id").Value(id);
   builder.Key("map").Value(image.str()).EndDict();
   if (!img_path.empty()) {
-    // Обрабатываем сейв изображения
+    if (!img_path.ends_with(".svg")) {
+      img_path += ".svg";
+    }
+    fstream svg_file(img_path, ios::out | ios::trunc);
+    if (!svg_file.is_open()) {
+      cerr << "Ошибка записи в файл" << endl;
+      return;
+    }
+    svg_file << image.str();
+    svg_file.close();
   }
 }
 
